@@ -25,7 +25,9 @@ const Cart = () => {
   };
 
   if (cartItems.length === 0) {
-    return <div className="text-center mt-8 text-gray-600">Your cart is empty.</div>;
+    return (
+      <div className="text-center mt-8 text-gray-600">Your cart is empty.</div>
+    );
   }
 
   return (
@@ -33,17 +35,26 @@ const Cart = () => {
       <h2 className="text-2xl font-bold mb-6">Your Cart</h2>
       <div className="space-y-4">
         {cartItems.map(({ recipe, quantity }) => (
-          <div key={recipe.id} className="flex items-center bg-white shadow rounded-lg p-4">
-            <img src={recipe.image} alt={recipe.name} className="h-20 w-16 object-contain mr-4" />
+          <div
+            key={recipe.id}
+            className="flex items-center bg-white shadow rounded-lg p-4"
+          >
+            <img
+              src={recipe.image}
+              alt={recipe.name}
+              className="h-20 w-16 object-contain mr-4"
+            />
             <div className="flex-1">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold mb-0">{recipe.name}</h3>
                 <span className="flex items-center text-yellow-500 text-sm font-semibold">
-                  ★ {recipe.rating}
+                  ⭐{recipe.rating}
                 </span>
               </div>
               <p className="text-gray-600 text-sm">{recipe.cuisine}</p>
-              <p className="text-gray-600 text-sm">{recipe.caloriesPerServing} cal/serving</p>
+              <p className="text-gray-600 text-sm">
+                {recipe.caloriesPerServing} cal/serving
+              </p>
             </div>
             <div className="flex items-center mr-4">
               <button
@@ -61,8 +72,18 @@ const Cart = () => {
                 +
               </button>
             </div>
-            <Link to={`/recipe/${recipe.id}`} className="text-green-600 hover:underline mr-4">View</Link>
-            <button onClick={() => handleRemove(recipe.id)} className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Remove</button>
+            <Link
+              to={`/recipe/${recipe.id}`}
+              className="text-green-600 hover:underline mr-4"
+            >
+              View
+            </Link>
+            <button
+              onClick={() => handleRemove(recipe.id)}
+              className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>
@@ -70,4 +91,4 @@ const Cart = () => {
   );
 };
 
-export default Cart; 
+export default Cart;
